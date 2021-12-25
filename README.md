@@ -1,1 +1,1 @@
-# RPSgame
+# RPS-Game
