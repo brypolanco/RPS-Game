@@ -51,19 +51,34 @@ function game(){
         return message;
     }
 
+
+
     const btn1 = document.getElementById('rock');
     const btn2 = document.getElementById('paper');
     const btn3 = document.getElementById('scissors');
     const divResults = document.querySelector('div');
 
     function btnClick(value){
-        divResults.textContent = playRound(value,computerPlay());
+        divResults.textContent = playRound(value,computerPlay()) + 
+        `. Player score ${playerScore} | Computer score ${computerScore}`;
+
+        if(!(playerScore===5||computerScore===5)){
+            return;
+        }
+        else{
+            const result = (playerScore>computerScore)? "Congrats! You Win The Game!":
+            "Sorry! You Lost The Game!";
+
+            divResults.textContent = result + 
+            ` Player score ${playerScore} | Computer score ${computerScore}`
+        }
+        
     }
 
     btn1.addEventListener("click", () => {btnClick(btn1.value)});
     btn2.addEventListener("click", () => {btnClick(btn2.value)});
     btn3.addEventListener("click", () => {btnClick(btn3.value)});
-
+    
 }
 
 game();
